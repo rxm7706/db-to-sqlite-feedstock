@@ -1,8 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
 schema_version: 1
 
 context:
   name: db-to-sqlite
-  version: 1.5
+  version: "1.5"
 
 package:
   name: ${{ name|lower }}
@@ -26,7 +27,7 @@ requirements:
     - pip
     - setuptools
   run:
-    - python >=${{ python_min }}
+    - python >=${{ python_min }},<4.0
     - sqlalchemy
     - sqlite-utils >=2.9.1
     - click
@@ -36,6 +37,7 @@ tests:
       imports:
         - db_to_sqlite
       python_version: ${{ python_min }}.*
+      pip_check: true
   - requirements:
       run:
         - pip
